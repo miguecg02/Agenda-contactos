@@ -1,0 +1,4 @@
+<app-contacts-table [contacts]="contactsService.contacts.value()" [loading]="contactsService.contacts.isLoading()"/>
+<button mat-fab class="tertiary" matTooltip="Nuevo contacto" (click)="showDialogNewContact()">
+  <mat-icon>add</mat-icon>
+</button>

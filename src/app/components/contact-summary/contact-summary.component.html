@@ -1,0 +1,22 @@
+<div class="contacto-container" [routerLink]="['/contacts',this.contact().id]">
+  <p>{{contact().firstName}} {{contact().lastName}}
+    @if(contact().isFavorite){
+      <mat-icon fontIcon="star" matTooltip="Favorito"/>
+    }</p>
+  <p>{{contact().phone}}</p>
+  <p id="email-container">{{contact().email}}</p>
+  <p>
+    <mat-chip-set aria-label="Grupos de contacto">
+    @for(group of contact().groupIds; track group){
+      <mat-chip [routerLink]="['/groups',group]" (click)="$event.stopPropagation()">{{groupsService.getByIdLocal(group)?.name}}</mat-chip>
+    }
+  </mat-chip-set>
+  <div id="actions-container">
+    <button mat-icon-button (click)="showEditDialog($event)" matTooltip="Editar contacto">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon (click)="showDeleteDialog($event)" matTooltip="Eliminar contacto">delete</mat-icon>
+    </button>
+  </div>
+</div>

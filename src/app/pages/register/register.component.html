@@ -1,0 +1,34 @@
+<div id="container">
+    <mat-card>
+      <h1>Agenda de contactos</h1>
+      <form (ngSubmit)="register()" [formGroup]="form" class="flex-column">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput autocomplete="given-name" type="text" name="firstName" id="firstName" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput autocomplete="family-name" type="text" name="lastName" id="lastName" formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput autocomplete="email" type="email" name="email" id="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input matInput autocomplete="new-password" type="password" name="password" id="password" formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Reescribí la contraseña</mat-label>
+          <input matInput type="password" name="password2" id="password2" formControlName="password2">
+          @if(form.get('password2')?.hasError('passwordMismatch')){
+            <mat-error>
+              Las contraseñas no coinciden
+            </mat-error>
+          }
+        </mat-form-field>
+        <button mat-button [disabled]="form.invalid">Registrarse</button>
+        <p>¿Ya tenés cuenta? <a [routerLink]="['/login']">Iniciá sesión</a>.</p>
+      </form>
+    </mat-card>
+</div>

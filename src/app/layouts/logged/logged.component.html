@@ -1,0 +1,49 @@
+<app-header (toggleSidebar)="expanded.set(!expanded())" />
+<div id="extendable-container">
+  <div id="extendable" class="flex-column" [class.extended]="expanded()">
+    <nav class="flex-column">
+      <a mat-button [routerLink]="['/contacts']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" matTooltip="Contactos" [matTooltipDisabled]="expanded()">
+        <mat-icon>person</mat-icon>
+        <span>Contactos</span>
+      </a>
+      @if(!expanded()){
+        <a mat-button (click)="expanded.set(true)" matTooltip="Grupos" [matTooltipDisabled]="expanded()">
+          <mat-icon>label</mat-icon>
+          <span>Grupos</span>
+        </a>
+      }
+      
+      @if(expanded()){
+        <p>Grupos</p>
+        <button mat-button (click)="openCreateGroupModal()">
+          <mat-icon>add</mat-icon>
+          <span>Nuevo</span>
+        </button>
+        @for(group of groupsService.groups.value(); track group.id){
+          <a mat-button [routerLink]="['/groups',group.id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon>label</mat-icon>
+            <span>{{group.name}}</span>
+          </a>
+        }
+      }
+    </nav>
+    <div class="flex-column">
+      @if(showExport()){
+        <button mat-button (click)="export()" matTooltip="Exportar" [matTooltipDisabled]="expanded()">
+          <mat-icon>save</mat-icon>
+          <span>Exportar</span>
+        </button>
+      }
+      @if(expanded()){
+        <p>{{authService.user()?.email}}</p>
+      }
+      <button mat-button (click)="authService.logout()" matTooltip="Cerrar sesión" [matTooltipDisabled]="expanded()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

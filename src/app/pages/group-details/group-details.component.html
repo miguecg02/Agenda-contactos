@@ -1,0 +1,25 @@
+@if(!group.value()){
+  <p>Grupo no econtrado</p>
+} @else {
+  <mat-card>
+    <mat-card-content>
+      @if(group.value()?.description){
+        <p>{{group.value()?.description}}</p>
+      } @else {
+        <p>Grupo sin descripción.</p>
+      }
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="openEditDialog()">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-button (click)="openDeleteDialog()" class="error">
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <app-contacts-table [contacts]="group.value()!.contacts"/>
+ 
+}

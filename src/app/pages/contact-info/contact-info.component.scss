@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+mat-card-content{
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  #right{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40px 1fr;
+    gap: 20px 0px;
+    a{
+      text-decoration: none;
+      color: var(--mat-icon-color);
+    }
+  }
+}
+
+#favorite{
+  position: absolute;
+  right: 20px;
+  top: -30px;
+  .active{
+    color: var(--mat-sys-on-tertiary-container)
+  }
+}
+
+button.active{
+  @include mat.menu-overrides((
+    item-label-text-color: var(--mat-sys-tertiary),
+    item-icon-color: var(--mat-sys-tertiary)red,
+    container-color: red,
+  ));
+}

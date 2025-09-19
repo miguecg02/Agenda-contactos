@@ -1,0 +1,20 @@
+#table-header{
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+
+@container(width < 500px){
+  #actions{
+    display: none;
+  }
+}
+
+@container(width < 400px){
+  #email{
+    display: none;
+  }
+}

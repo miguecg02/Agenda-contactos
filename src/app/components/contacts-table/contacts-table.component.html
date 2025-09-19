@@ -1,0 +1,17 @@
+@if(loading()){
+  <p>Cargando</p>
+}
+
+<div id="table-header">
+  <span>Nombre</span>
+  <span>Teléfono</span>
+  <span id="email">Email</span>
+  <span>Grupos</span>
+  <span id="actions">Acciones</span>
+</div>
+<mat-divider/>
+@for (contact of contacts(); track contact.id) {
+  <app-contact-summary [contact]=contact/>
+} @empty {
+  <p>No hay contactos</p>
+}

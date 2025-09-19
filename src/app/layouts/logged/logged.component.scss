@@ -1,0 +1,52 @@
+.active{
+  background-color: var(--mat-sys-surface-bright);
+  font-weight: 700;
+}
+
+#extendable-container{
+  display: flex;
+  height: calc(100% - 64px); //Le resto el alto del header
+  main{
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+#extendable{
+  width: 40px;
+  justify-content: space-between;
+  transition: 200ms ease-in-out;
+  padding: 20px 10px;
+  container-type: inline-size;
+  background-color: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-primary);
+  &.extended{
+    width: 180px;
+    align-items: start;
+  }
+  >*{
+    align-items: start;
+  }
+}
+
+p{
+  margin-top: 5px;
+}
+
+@container (width < 120px) {
+  a, button{
+    padding: 0 !important;
+    min-width: 40px;
+    mat-icon{
+      margin: 0;
+    }
+    // width: 100px !important;
+  }
+  span {
+    display: none;
+  }
+}
+
+button{
+  text-align: center;
+}

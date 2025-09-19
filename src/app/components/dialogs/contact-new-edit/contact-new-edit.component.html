@@ -1,0 +1,45 @@
+@if(contact()){
+  <h2 mat-dialog-title>Editar contacto</h2>
+} @else {
+  <h2 mat-dialog-title>Nuevo contacto</h2>
+}
+<form (ngSubmit)="save()" [formGroup]="form">
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" name="firstName" id="firstName" autocomplete="given-name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput type="text" name="lastName" id="lastName" autocomplete="family-name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="text" name="phone" id="phone" autocomplete="tel" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Empresa</mat-label>
+      <input matInput type="text" name="company" id="company" autocomplete="organization" formControlName="company">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Dirección</mat-label>
+      <input matInput type="text" name="address" id="address" autocomplete="address" formControlName="address">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput type="email" name="email" id="email" autocomplete="current-email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Imagen (URL)</mat-label>
+      <input matInput type="text" name="imageUrl" id="imageUrl" formControlName="imageUrl">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput type="text" name="text" id="text" formControlName="description"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button matDialogClose class="error">Cancelar</button>
+    <button mat-button [disabled]="form.invalid" class="tertiary">Guardar</button>
+  </mat-dialog-actions>
+</form>
